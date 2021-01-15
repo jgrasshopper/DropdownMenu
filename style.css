@@ -1,0 +1,126 @@
+/* == CSS Variables == */
+:root {
+  --primary-color: coral;
+  --secondary-color: chocolate;
+}
+
+/* == CSS Reset == */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* == Main Styling == */
+body {
+  background: #f4f4f4;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* == Navbar == */
+#navbar ul {
+  list-style: none;
+}
+
+#navbar ul li {
+  color: #333;
+  /* That way, the li's will sit side by side */
+  display: inline-block;
+  padding: 1rem;
+  position: relative;
+}
+
+#navbar ul li a {
+  color: #333;
+  text-decoration: none;
+}
+
+/* Hide nested ul by default */
+#navbar ul li ul {
+  display: none;
+}
+
+#navbar ul li:hover {
+  background: var(--primary-color);
+  color: #fff;
+  cursor: pointer;
+}
+
+#navbar ul li:hover a {
+  color: #fff;
+}
+
+/* Nested dropdown to show */
+#navbar ul li:hover ul {
+  display: block;
+  /* By displaying it as block, it will show once hover. However, it won't show up properly and what we
+  can do is position it as absolute and add a width */
+  position: absolute;
+  left: 0;
+  width: 200px;
+  margin-top: 1rem;
+}
+
+#navbar ul li:hover ul li {
+  background: #e7e7e7;
+  display: block;
+}
+
+#navbar ul li:hover ul li a {
+  color: #333;
+}
+
+#navbar ul li:hover ul li:hover {
+  background: #e0e0e0;
+  color: inherit;
+}
+
+#navbar ul li:hover ul li span {
+  background: var(--primary-color);
+  border-radius: 5px;
+  color: #fff;
+  font-size: 0.8rem;
+  float: right;
+  padding: 0.2rem 0.5rem;
+  text-align: center;
+}
+
+#navbar ul li:hover ul li:hover span {
+  background: var(--secondary-color);
+}
+
+/* == Showcase == */
+#showcase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 300px;
+  background: var(--primary-color);
+  padding: 0 2rem;
+}
+
+#showcase h1 {
+  color: #fff;
+  font-size: 4rem;
+}
+
+/* == Media Queries == */
+@media(max-width: 600px) {
+  #navbar ul li {
+    /* We need to display it as block that way, they will sit on top of each other */
+    display: block;
+  }
+
+  /* When hover the nested ul's, we won't see the rest of the menu when we hover over it since it's 
+  position as absolute, we need to change it to relative */
+  #navbar ul li:hover ul {
+    position: relative;
+    width: 100%;
+  }
+
+  #showcase h1 {
+    font-size: 1.5rem;
+  }
+}
